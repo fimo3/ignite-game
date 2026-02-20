@@ -1,15 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cexxg4s0ps8s0"]
+[gd_scene format=3 uid="uid://cexxg4s0ps8s0"]
 
-[ext_resource type="Texture2D" uid="uid://cabvbdfh7eb6l" path="res://icon.svg" id="1_brfkd"]
+[ext_resource type="Script" uid="uid://02q1qinw4284" path="res://tree.gd" id="1_nnvrw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nnvrw"]
+size = Vector2(22, 3.5)
 
-[node name="Tree" type="CharacterBody2D"]
+[node name="Tree" type="StaticBody2D" unique_id=280761549]
+script = ExtResource("1_nnvrw")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(-0.9999962, -3.8146973e-06)
-scale = Vector2(0.171875, 0.171875)
-texture = ExtResource("1_brfkd")
+[node name="BranchContainer" type="Node2D" parent="." unique_id=1602183046]
+scale = Vector2(0.2, 0.2)
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1790793445]
+position = Vector2(0, 19.75)
 shape = SubResource("RectangleShape2D_nnvrw")

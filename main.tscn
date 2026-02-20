@@ -1,3 +1,14 @@
 [gd_scene format=3 uid="uid://e3ck7hcqqujy"]
 
-[node name="Main" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://cd7dxcqrnt0fy" path="res://mushroom.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cexxg4s0ps8s0" path="res://tree.tscn" id="2_h2yge"]
+
+[node name="Main" type="Node2D" unique_id=861530743]
+
+[node name="Mushroom" parent="." unique_id=773141672 instance=ExtResource("1_0xm2m")]
+position = Vector2(123, 61)
+
+[node name="Tree" parent="." unique_id=1191289846 instance=ExtResource("2_h2yge")]
+position = Vector2(600, 561)
+id = 4
+branch_split_chance = 0.99
