@@ -1,12 +1,25 @@
 [gd_scene format=3 uid="uid://cexxg4s0ps8s0"]
 
-[ext_resource type="Script" uid="uid://02q1qinw4284" path="res://tree.gd" id="1_nnvrw"]
+[ext_resource type="Script" uid="uid://02q1qinw4284" path="res://scripts/tree.gd" id="1_nnvrw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nnvrw"]
 size = Vector2(22, 3.5)
 
 [node name="Tree" type="StaticBody2D" unique_id=280761549]
 script = ExtResource("1_nnvrw")
+id = null
+max_depth = null
+initial_length = null
+length_decay = null
+branch_split_chance = null
+angle_variation = null
+thickness_start = null
+thickness_decay = null
+seed = null
+branch_textures = null
+leaf_texture = null
+fruit_scene = null
+fruit_chance = null
 
 [node name="BranchContainer" type="Node2D" parent="." unique_id=1602183046]
 scale = Vector2(0.2, 0.2)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnt4wcfmg444x"
-path="res://.godot/imported/2branch_fern2.png-97eab54a7b132456513bfede135f7b02.ctex"
+uid="uid://bvkpft7n34sh1"
+path="res://.godot/imported/mediumtrunk_branch.png-00a7f55a4f9ac6481fdb835511ffe8b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2branch_fern2.png"
-dest_files=["res://.godot/imported/2branch_fern2.png-97eab54a7b132456513bfede135f7b02.ctex"]
+source_file="res://textures/mediumtrunk_branch.png"
+dest_files=["res://.godot/imported/mediumtrunk_branch.png-00a7f55a4f9ac6481fdb835511ffe8b3.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8x3nchfgqsmc"
-path="res://.godot/imported/tree-branch-isolated-on-transparent-background-png.png-cea8e6a65591dd9fb2f7e06ba5fba2e2.ctex"
+uid="uid://brqttwtdhfi5c"
+path="res://.godot/imported/fern_leaf.png-522230e9e57286c3e20decd55a588ca5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tree-branch-isolated-on-transparent-background-png.png"
-dest_files=["res://.godot/imported/tree-branch-isolated-on-transparent-background-png.png-cea8e6a65591dd9fb2f7e06ba5fba2e2.ctex"]
+source_file="res://textures/fern_leaf.png"
+dest_files=["res://.godot/imported/fern_leaf.png-522230e9e57286c3e20decd55a588ca5.ctex"]
 
 [params]
 

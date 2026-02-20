@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cchq7ww586rol"
-path="res://.godot/imported/earthplanet.png-2ed9ccdeda696cce36018bf14e26afe6.ctex"
+uid="uid://bp34td8c67tr1"
+path="res://.godot/imported/3branch_fern2.png-179057fc8fd0baa35d29ed84ae0ce3cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://earthplanet.png"
-dest_files=["res://.godot/imported/earthplanet.png-2ed9ccdeda696cce36018bf14e26afe6.ctex"]
+source_file="res://textures/3branch_fern2.png"
+dest_files=["res://.godot/imported/3branch_fern2.png-179057fc8fd0baa35d29ed84ae0ce3cb.ctex"]
 
 [params]
 

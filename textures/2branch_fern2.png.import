@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buigxepbh41g0"
-path="res://.godot/imported/asteroidfire.png-5767abc8456140fe1fc6184105c695ff.ctex"
+uid="uid://bnt4wcfmg444x"
+path="res://.godot/imported/2branch_fern2.png-aaddd95a2eaea705c33f4b364da2dafc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asteroidfire.png"
-dest_files=["res://.godot/imported/asteroidfire.png-5767abc8456140fe1fc6184105c695ff.ctex"]
+source_file="res://textures/2branch_fern2.png"
+dest_files=["res://.godot/imported/2branch_fern2.png-aaddd95a2eaea705c33f4b364da2dafc.ctex"]
 
 [params]
 

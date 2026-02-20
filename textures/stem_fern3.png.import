@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dup1dsnutjq06"
-path="res://.godot/imported/asteroid.png-d2db2557ecd7f0d981e923efb6f92b62.ctex"
+uid="uid://dkina8d8kwyaf"
+path="res://.godot/imported/stem_fern3.png-924ea9acb351d8fa2324c6d45db22f23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asteroid.png"
-dest_files=["res://.godot/imported/asteroid.png-d2db2557ecd7f0d981e923efb6f92b62.ctex"]
+source_file="res://textures/stem_fern3.png"
+dest_files=["res://.godot/imported/stem_fern3.png-924ea9acb351d8fa2324c6d45db22f23.ctex"]
 
 [params]
 

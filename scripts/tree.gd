@@ -16,12 +16,12 @@ enum TreeType {
 @export var thickness_decay : float = 0.7
 @export var seed : int = 0
 @export var branch_textures : Array[Texture2D] = [
-	preload("res://stem_fern1.png"),
-	preload("res://stem_fern2.png"),
-	preload("res://stem_fern3.png")
+	preload("res://textures/stem_fern1.png"),
+	preload("res://textures/stem_fern2.png"),
+	preload("res://textures/stem_fern3.png")
 ]
-@export var leaf_texture : Texture2D = preload("res://fern_leaf.png")
-@export var fruit_scene : PackedScene = preload("res://fruit.tscn")
+@export var leaf_texture : Texture2D = preload("res://textures/fern_leaf.png")
+@export var fruit_scene : PackedScene = preload("res://scenes/fruit.tscn")
 @export var fruit_chance : float = 0.6
 @onready var branch_container = $BranchContainer
 var rng := RandomNumberGenerator.new()

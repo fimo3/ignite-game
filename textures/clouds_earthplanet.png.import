@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkina8d8kwyaf"
-path="res://.godot/imported/stem_fern3.png-a0b7a6d2ff04bb49c85dc2b414222220.ctex"
+uid="uid://cb1ayaessdk4"
+path="res://.godot/imported/clouds_earthplanet.png-37db241b5222c3776d78cfece2780c71.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://stem_fern3.png"
-dest_files=["res://.godot/imported/stem_fern3.png-a0b7a6d2ff04bb49c85dc2b414222220.ctex"]
+source_file="res://textures/clouds_earthplanet.png"
+dest_files=["res://.godot/imported/clouds_earthplanet.png-37db241b5222c3776d78cfece2780c71.ctex"]
 
 [params]
 

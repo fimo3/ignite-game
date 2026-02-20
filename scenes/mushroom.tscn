@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cd7dxcqrnt0fy"]
 
-[ext_resource type="Script" uid="uid://btvigqw1jjqlb" path="res://mushroom.gd" id="1_ke5i0"]
+[ext_resource type="Script" uid="uid://btvigqw1jjqlb" path="res://scripts/mushroom.gd" id="1_ke5i0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ke5i0"]
 size = Vector2(63, 20)
