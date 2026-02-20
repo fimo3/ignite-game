@@ -7,21 +7,9 @@ size = Vector2(22, 3.5)
 
 [node name="Tree" type="StaticBody2D" unique_id=280761549]
 script = ExtResource("1_nnvrw")
-id = null
-max_depth = null
-initial_length = null
-length_decay = null
-branch_split_chance = null
-angle_variation = null
-thickness_start = null
-thickness_decay = null
-seed = null
-branch_textures = null
-leaf_texture = null
-fruit_scene = null
-fruit_chance = null
 
 [node name="BranchContainer" type="Node2D" parent="." unique_id=1602183046]
+z_index = 30
 scale = Vector2(0.2, 0.2)
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1790793445]

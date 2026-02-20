@@ -89,6 +89,8 @@ func create_branch_sprite(start_pos: Vector2, end_pos: Vector2, thickness: float
 	var length = dir.length()
 	sprite.scale.x = length / texture.get_width()
 	sprite.scale.y = thickness
+	sprite.z_as_relative = false
+	sprite.z_index = 0
 	sprite.modulate = tree_color.darkened(depth * 0.05)
 	branch_container.add_child(sprite)
 
@@ -127,4 +129,6 @@ func create_leaf_tip(pos: Vector2, direction: Vector2, length: float, thickness:
 	sprite.scale.x = length / leaf_texture.get_width()
 	sprite.scale.y = thickness
 	sprite.modulate = tree_color
+	sprite.z_as_relative = false
+	sprite.z_index = 10
 	branch_container.add_child(sprite)

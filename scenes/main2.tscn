@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://4pqund3nukl7"]
+
+[ext_resource type="Texture2D" uid="uid://cchq7ww586rol" path="res://textures/earthplanet.png" id="1_efxa6"]
+[ext_resource type="Script" uid="uid://itdwl27ltrrc" path="res://scripts/planet.gd" id="2_dg77c"]
+[ext_resource type="Texture2D" uid="uid://cb1ayaessdk4" path="res://textures/clouds_earthplanet.png" id="3_ycdy4"]
+[ext_resource type="Script" uid="uid://dm32xddv4ln7a" path="res://scripts/wind.gd" id="4_dg77c"]
+[ext_resource type="Script" uid="uid://btiiq04dkrdck" path="res://scripts/asteroids/cameraShake.gd" id="4_w48qg"]
+[ext_resource type="Script" uid="uid://d0ucwhp7yx70w" path="res://scripts/cameraMove.gd" id="5_vivmo"]
+[ext_resource type="Script" uid="uid://vmh234ppm8c6" path="res://scripts/placePlant.gd" id="6_2cqfq"]
+[ext_resource type="Script" uid="uid://cjvsado6sdocg" path="res://scripts/asteroids/asteroidSpawner.gd" id="8_074og"]
+[ext_resource type="PackedScene" uid="uid://vefqqywkwd4n" path="res://scenes/asteroid.tscn" id="9_cegan"]
+[ext_resource type="Shader" uid="uid://h4fynifrjiye" path="res://flashbang.gdshader" id="10_82xsv"]
+[ext_resource type="Script" uid="uid://dektauylyki7r" path="res://scripts/asteroids/flashbang.gd" id="11_getpj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4d7sh"]
+shader = ExtResource("10_82xsv")
+shader_parameter/progress = 0.0
+shader_parameter/alpha = 1.0
+
+[node name="main" type="Node2D" unique_id=1075059599]
+
+[node name="Planet" type="Sprite2D" parent="." unique_id=1704800223]
+scale = Vector2(0.20806667, 0.20806667)
+texture = ExtResource("1_efxa6")
+script = ExtResource("2_dg77c")
+speedRadPerSec = 0.07
+radius = 200
+
+[node name="wind" type="Sprite2D" parent="." unique_id=847459486]
+scale = Vector2(0.208, 0.208)
+texture = ExtResource("3_ycdy4")
+script = ExtResource("4_dg77c")
+speedRadPerSec = -0.1
+radius = 200
+
+[node name="CameraNode" type="Node2D" parent="." unique_id=1564217696]
+
+[node name="Camera2D" type="Camera2D" parent="CameraNode" unique_id=49569729]
+visible = false
+limit_left = -1000000
+limit_top = -1000000
+limit_right = 1000000
+limit_bottom = 1000000
+script = ExtResource("4_w48qg")
+
+[node name="Pan_Zoom" type="Node2D" parent="CameraNode" unique_id=735391302]
+visible = false
+script = ExtResource("5_vivmo")
+cameraLimit = 400
+
+[node name="PlacePlant" type="Node2D" parent="CameraNode" unique_id=918441099]
+visible = false
+script = ExtResource("6_2cqfq")
+
+[node name="AsteroidSpawner" type="Node2D" parent="." unique_id=1869045878]
+script = ExtResource("8_074og")
+scene = ExtResource("9_cegan")
+spawn_distance = 4000.0
+
+[node name="FX" type="CanvasLayer" parent="." unique_id=1077480983]
+
+[node name="Flash" type="ColorRect" parent="FX" unique_id=1838386222]
+visible = false
+material = SubResource("ShaderMaterial_4d7sh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("11_getpj")

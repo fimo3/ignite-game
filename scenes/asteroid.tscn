@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://vefqqywkwd4n"]
+
+[ext_resource type="Texture2D" uid="uid://dup1dsnutjq06" path="res://textures/asteroid.png" id="1_t4se3"]
+[ext_resource type="Script" uid="uid://bc5exrb7euhxv" path="res://scripts/asteroids/moveAsteroid.gd" id="2_6mo6b"]
+[ext_resource type="Texture2D" uid="uid://buigxepbh41g0" path="res://textures/asteroidfire.png" id="3_pnq5b"]
+
+[node name="Asteroid" type="Node2D" unique_id=555861848]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=944893672]
+rotation = 0.26005405
+scale = Vector2(0.05984724, 0.05984724)
+texture = ExtResource("1_t4se3")
+script = ExtResource("2_6mo6b")
+velocity = 2000.0
+
+[node name="Asteroidfire" type="Sprite2D" parent="Sprite2D" unique_id=393455192]
+position = Vector2(-164.81787, 735.42444)
+rotation = -1.0367255
+scale = Vector2(1.2133974, 1.2133974)
+texture = ExtResource("3_pnq5b")

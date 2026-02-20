@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bcbjdbknccs0v"]
+
+[ext_resource type="Texture2D" uid="uid://b14k4on3t4a4n" path="res://textures/stem_fern1.png" id="1_epxb6"]
+
+[node name="BasicPlant" type="Node2D" unique_id=99352263]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1107523491]
+position = Vector2(0, 1.2821181)
+scale = Vector2(0.2, 0.13251892)
+texture = ExtResource("1_epxb6")
+centered = false
+offset = Vector2(-256, -1700)
