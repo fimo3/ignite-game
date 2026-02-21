@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://1452t36avpgo"]
+
+[ext_resource type="Script" uid="uid://bjt1vedalssue" path="res://scripts/inventory_slot.gd" id="1_dxvxp"]
+[ext_resource type="Texture2D" uid="uid://bf7adyv5gcyv4" path="res://textures/fruit1.png" id="2_bxqf6"]
+
+[node name="inventory slot" type="Panel" unique_id=1654525429]
+offset_right = 103.0
+offset_bottom = 103.0
+script = ExtResource("1_dxvxp")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=580713038]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+texture = ExtResource("2_bxqf6")
+
+[node name="Label" type="Label" parent="." unique_id=820175612]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Button" type="Button" parent="." unique_id=1472772919]
+layout_mode = 0
+offset_top = 103.0
+offset_right = 85.0
+offset_bottom = 134.0
+text = "Sell for $1"

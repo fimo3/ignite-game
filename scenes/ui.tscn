@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cgi5iti34shnr"]
+
+[ext_resource type="Script" uid="uid://bwgk7l2qg81wa" path="res://scripts/inventory_ui.gd" id="1_fyqef"]
+[ext_resource type="Texture2D" uid="uid://dho0ey8lmbgs8" path="res://textures/inventory.png" id="1_x4jx1"]
+
+[node name="UI" type="CanvasLayer" unique_id=1969435280]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2093632445]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1495.9998
+offset_top = -207.99997
+offset_right = 1504.0002
+offset_bottom = 2792.0
+grow_horizontal = 2
+scale = Vector2(0.21, 0.21)
+pivot_offset = Vector2(1500, 0)
+texture = ExtResource("1_x4jx1")
+
+[node name="Container" type="Container" parent="." unique_id=1834984569]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.19202
+offset_top = 29.0
+offset_right = -255.80798
+offset_bottom = 29.0
+grow_horizontal = 2
+script = ExtResource("1_fyqef")

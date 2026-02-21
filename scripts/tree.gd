@@ -6,6 +6,7 @@ enum TreeType {
 	BROWN,
 	YELLOW
 }
+@export var fruitpos : Array[Vector2]
 @export var id : TreeType = TreeType.GREEN
 @export var max_depth : int = 4
 @export var initial_length : float = 900.0
@@ -22,7 +23,7 @@ enum TreeType {
 ]
 @export var leaf_texture : Texture2D = preload("res://textures/fern_leaf.png")
 @export var fruit_scene : PackedScene = preload("res://scenes/fruit.tscn")
-@export var fruit_chance : float = 0.6
+@export var fruit_chance : float = 0.4
 @onready var branch_container = $BranchContainer
 var rng := RandomNumberGenerator.new()
 var tree_color : Color
@@ -118,6 +119,7 @@ func create_fruit(pos: Vector2):
 	var fruit = fruit_scene.instantiate()
 	fruit.position = pos
 	branch_container.add_child(fruit)
+	fruitpos.append(fruit.global_position)
 
 func create_leaf_tip(pos: Vector2, direction: Vector2, length: float, thickness: float):
 	if leaf_texture == null:

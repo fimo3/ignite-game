@@ -13,10 +13,13 @@ func flashbang(wipe_in := 0.5, hold := 0.5, fade_out := 1.5) -> void:
 	mat.set_shader_parameter("alpha", 0.0)
 
 	var tw := create_tween()
+	var tw2 := create_tween()
 	tw.tween_property(mat, "shader_parameter/progress", 1.0, wipe_in)
-	tw.tween_property(mat, "shader_parameter/alpha", 1.0, wipe_in)
-	tw.tween_interval(hold)
-	tw.tween_property(mat, "shader_parameter/alpha", 0.0, fade_out)
+	tw2.tween_property(mat, "shader_parameter/alpha", 1.0, wipe_in)
+	tw.tween_interval(hold + fade_out)
+	tw2.tween_interval(hold)
+	tw.tween_property(mat, "shader_parameter/progress", 0.0, 0)
+	tw2.tween_property(mat, "shader_parameter/alpha", 0.0, fade_out)
 
 	await tw.finished
 	visible = false

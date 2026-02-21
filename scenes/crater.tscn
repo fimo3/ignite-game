@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bwbh56ok88uvx"]
+
+[ext_resource type="Texture2D" uid="uid://c0egb8ckadbta" path="res://textures/planet_crater.png" id="1_2rwwl"]
+
+[node name="Crater" type="Node2D" unique_id=552737287]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=475285423]
+z_index = 2
+z_as_relative = false
+position = Vector2(-3.0000005, -40)
+rotation = -1.134464
+scale = Vector2(0.27269676, 0.27269676)
+texture = ExtResource("1_2rwwl")

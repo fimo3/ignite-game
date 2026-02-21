@@ -1,14 +1,105 @@
-[gd_scene format=3 uid="uid://e3ck7hcqqujy"]
+[gd_scene format=3 uid="uid://4pqund3nukl7"]
 
-[ext_resource type="PackedScene" uid="uid://cd7dxcqrnt0fy" path="res://scenes/mushroom.tscn" id="1_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://cexxg4s0ps8s0" path="res://scenes/tree.tscn" id="2_sugp2"]
+[ext_resource type="Texture2D" uid="uid://cchq7ww586rol" path="res://textures/earthplanet.png" id="1_trceg"]
+[ext_resource type="Script" uid="uid://itdwl27ltrrc" path="res://scripts/planet.gd" id="2_a8y0u"]
+[ext_resource type="Script" uid="uid://dg2vlib6r2slp" path="res://scripts/asteroidspawner.gd" id="3_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://cb1ayaessdk4" path="res://textures/clouds_earthplanet.png" id="4_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://bwbh56ok88uvx" path="res://scenes/crater.tscn" id="5_0ld40"]
+[ext_resource type="Texture2D" uid="uid://bbsnbsf6gjuoj" path="res://textures/spaceback_miniplanets.png" id="5_dp3eg"]
+[ext_resource type="Script" uid="uid://dm32xddv4ln7a" path="res://scripts/wind.gd" id="5_muem4"]
+[ext_resource type="Texture2D" uid="uid://dtib31u55s0yk" path="res://textures/spaceback-stars.png" id="6_0ld40"]
+[ext_resource type="Script" uid="uid://btiiq04dkrdck" path="res://scripts/asteroids/cameraShake.gd" id="6_dp3eg"]
+[ext_resource type="PackedScene" path="res://scenes/tempTree2.tscn" id="6_gqmmt"]
+[ext_resource type="Script" uid="uid://d0ucwhp7yx70w" path="res://scripts/cameraMove.gd" id="7_0ld40"]
+[ext_resource type="Script" uid="uid://vmh234ppm8c6" path="res://scripts/placePlant.gd" id="8_gqmmt"]
+[ext_resource type="Texture2D" uid="uid://c6hm0ul3g1i4l" path="res://textures/starsplanet.png" id="9_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://vefqqywkwd4n" path="res://scenes/asteroid.tscn" id="10_jscy8"]
+[ext_resource type="Shader" uid="uid://h4fynifrjiye" path="res://flashbang.gdshader" id="11_pm3ni"]
+[ext_resource type="Script" uid="uid://dektauylyki7r" path="res://scripts/asteroids/flashbang.gd" id="12_y6deb"]
+[ext_resource type="PackedScene" uid="uid://cgi5iti34shnr" path="res://scenes/ui.tscn" id="13_og1vs"]
+[ext_resource type="Texture2D" uid="uid://bxexjhte6i86h" path="res://textures/spacebackround.png" id="13_yc10j"]
 
-[node name="Main" type="Node2D" unique_id=861530743]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4d7sh"]
+shader = ExtResource("11_pm3ni")
+shader_parameter/progress = 0.0
+shader_parameter/alpha = 1.0
 
-[node name="Mushroom" parent="." unique_id=773141672 instance=ExtResource("1_0wfyh")]
-position = Vector2(123, 61)
+[node name="main" type="Node2D" unique_id=1075059599]
 
-[node name="Tree" parent="." unique_id=1191289846 instance=ExtResource("2_sugp2")]
-position = Vector2(600, 561)
-id = 4
-branch_split_chance = 0.99
+[node name="Planet" type="Sprite2D" parent="." unique_id=1704800223]
+z_index = 1
+scale = Vector2(0.20806667, 0.20806667)
+texture = ExtResource("1_trceg")
+script = ExtResource("2_a8y0u")
+speedRadPerSec = 0.07
+radius = 200
+
+[node name="AsteroidSpawner" type="Node2D" parent="Planet" unique_id=260001844]
+scale = Vector2(4.8, 4.8)
+script = ExtResource("3_jkv2x")
+scene = ExtResource("10_jscy8")
+crater = ExtResource("5_0ld40")
+explosiontree = ExtResource("6_gqmmt")
+spawn_distance = 4000.0
+
+[node name="BGPlanet" type="Sprite2D" parent="." unique_id=515099354]
+z_index = -2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_dp3eg")
+
+[node name="BGStars" type="Sprite2D" parent="." unique_id=1184323695]
+visible = false
+z_index = -1
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_0ld40")
+
+[node name="wind" type="Sprite2D" parent="." unique_id=847459486]
+z_index = 1000
+z_as_relative = false
+scale = Vector2(0.208, 0.208)
+texture = ExtResource("4_jbj1t")
+script = ExtResource("5_muem4")
+speedRadPerSec = -0.1
+radius = 200
+
+[node name="wind2" type="Sprite2D" parent="." unique_id=195382423]
+z_index = 2
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_gqmmt")
+script = ExtResource("5_muem4")
+speedRadPerSec = -0.1
+radius = 200
+
+[node name="CameraNode" type="Node2D" parent="." unique_id=1564217696]
+
+[node name="Camera2D" type="Camera2D" parent="CameraNode" unique_id=49569729]
+limit_left = -1000000
+limit_top = -1000000
+limit_right = 1000000
+limit_bottom = 1000000
+script = ExtResource("6_dp3eg")
+
+[node name="Pan_Zoom" type="Node2D" parent="CameraNode" unique_id=735391302]
+visible = false
+script = ExtResource("7_0ld40")
+cameraLimit = 400
+
+[node name="PlacePlant" type="Node2D" parent="CameraNode" unique_id=918441099]
+visible = false
+script = ExtResource("8_gqmmt")
+
+[node name="BG" type="Sprite2D" parent="CameraNode" unique_id=180141322]
+z_index = -3
+texture = ExtResource("13_yc10j")
+
+[node name="FX" type="CanvasLayer" parent="." unique_id=1077480983]
+
+[node name="Flash" type="ColorRect" parent="FX" unique_id=1838386222]
+material = SubResource("ShaderMaterial_4d7sh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("12_y6deb")
+
+[node name="UI" parent="." unique_id=1969435280 instance=ExtResource("13_og1vs")]
