@@ -67,7 +67,7 @@ z_index = 2
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("9_gqmmt")
 script = ExtResource("5_muem4")
-speedRadPerSec = -0.1
+speedRadPerSec = -0.2
 radius = 200
 
 [node name="CameraNode" type="Node2D" parent="." unique_id=1564217696]
