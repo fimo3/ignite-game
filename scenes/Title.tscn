@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://dmygt7lhu4j3h"]
+
+[ext_resource type="Texture2D" uid="uid://b7k6n6mjqlghy" path="res://textures/startscreen.png" id="1_ascc0"]
+[ext_resource type="Script" uid="uid://5x7rt13lgvjq" path="res://scenes/main_menu.gd" id="1_lq0lj"]
+
+[sub_resource type="FontVariation" id="FontVariation_lq0lj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lq0lj"]
+line_spacing = -46.195
+font = SubResource("FontVariation_lq0lj")
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.21960784)
+shadow_offset = Vector2(0, 5)
+
+[node name="Title" type="Node2D" unique_id=1596450562]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=543901911]
+script = ExtResource("1_lq0lj")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1489300723]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 2.0
+texture = ExtResource("1_ascc0")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="CanvasLayer" unique_id=575049389]
+offset_left = 701.0
+offset_top = 89.0
+offset_right = 1070.0
+offset_bottom = 219.0
+text = "Pan
+spermia"
+label_settings = SubResource("LabelSettings_lq0lj")
+
+[node name="Start" type="Button" parent="CanvasLayer" unique_id=496575124]
+anchors_preset = -1
+anchor_left = 0.623
+anchor_top = 0.5
+anchor_right = 0.93700004
+anchor_bottom = 0.62700003
+offset_left = 0.30395508
+offset_top = 11.0
+offset_right = -0.42407227
+offset_bottom = -0.2960205
+text = "Start"
+
+[node name="Cool button ig?" type="Button" parent="CanvasLayer" unique_id=1570920489]
+anchors_preset = -1
+anchor_left = 0.624
+anchor_top = 0.665
+anchor_right = 0.93700004
+anchor_bottom = 0.77500004
+offset_left = 0.15197754
+offset_top = 0.07998657
+offset_right = -0.42407227
+offset_bottom = -0.2000122
+text = "Cool button does nothing"
+
+[node name="Quit" type="Button" parent="CanvasLayer" unique_id=1217353770]
+anchors_preset = -1
+anchor_left = 0.623
+anchor_top = 0.813
+anchor_right = 0.93700004
+anchor_bottom = 0.91400003
+offset_left = 0.30395508
+offset_top = 0.17596436
+offset_right = 0.57592773
+offset_bottom = -0.2720337
+text = "Quit"
+
+[connection signal="button_up" from="CanvasLayer/Start" to="CanvasLayer" method="_on_start_button_up"]
+[connection signal="button_up" from="CanvasLayer/Quit" to="CanvasLayer" method="_on_quit_button_up"]
