@@ -1,20 +1,22 @@
-extends StaticBody2D
+extends Node2D
 
-enum State { PLANTED, LAUNCHING, ORBITING }
+enum State { PLANTED, LAUNCHING }
 
-@export var launch_speed := 300.0
-@export var gravity := 0.2
-@export var gravity_scale := 120.0 
+@export var launch_speed := 30.0
+@export var auto_launch_time := 10.0
 
 var state: State = State.PLANTED
-var velocity: Vector2 = Vector2.ZERO
+var launch_dir: Vector2 = Vector2.ZERO
 var planet_ref: Node2D = null
 
 @onready var sprite: Sprite2D = $Sprite
-@onready var flame: Node2D = $Flame if has_node("Flame") else null
+@onready var flame: Node2D = $Flame
 
 func _ready() -> void:
-	pass
+	_find_planet()
+	await get_tree().create_timer(auto_launch_time).timeout
+	if state == State.PLANTED:
+		_launch()
 
 func _input_event(_viewport, event, _shape_idx):
 	if state == State.PLANTED and Input.is_action_just_pressed("right click"):
@@ -22,62 +24,42 @@ func _input_event(_viewport, event, _shape_idx):
 
 func _on_mouse_entered() -> void:
 	if state == State.PLANTED:
-		modulate = Color(1.2, 1.2, 0.5, 1.0)
+		sprite.modulate = Color(1.4, 1.4, 0.5)
 
 func _on_mouse_exited() -> void:
-	modulate = Color(1.0, 1.0, 1.0, 1.0)
+	sprite.modulate = Color(1, 1, 1)
 
 func _launch() -> void:
-	_find_planet()
+	if state != State.PLANTED:
+		return
 	state = State.LAUNCHING
 
-	var col := get_node_or_null("Collision")
-	if col:
-		col.disabled = true
-
-	var dir: Vector2
+	# Direction straight away from planet center
 	if planet_ref:
-		dir = (global_position - planet_ref.global_position).normalized()
+		launch_dir = (global_position - planet_ref.global_position).normalized()
 	else:
-		dir = -global_position.normalized()
-
-	var tangent := Vector2(-dir.y, dir.x)
-	velocity = dir * launch_speed + tangent * launch_speed * 0.55
+		launch_dir = Vector2.UP
 
 	if flame:
 		flame.visible = true
 
 	_unregister_from_planet()
 
+	# Reparent to scene root so planet rotation doesn't drag it along
+	var scene_root := get_tree().current_scene
+	var saved_pos := global_position
+	var saved_rot := global_rotation
+	get_parent().remove_child(self)
+	scene_root.add_child(self)
+	global_position = saved_pos
+	global_rotation = saved_rot
+
 func _process(delta: float) -> void:
-	match state:
-		State.LAUNCHING, State.ORBITING:
-			_step_physics(delta)
-
-func _step_physics(delta: float) -> void:
-	if not planet_ref:
-		_find_planet()
-		return
-
-	var to_planet: Vector2 = planet_ref.global_position - global_position
-	var dist: float = to_planet.length()
-
-	var grav_accel: float = gravity * gravity_scale           # px/s²
-	var grav_dir: Vector2 = to_planet / dist if dist > 0.0 else Vector2.ZERO
-	velocity += grav_dir * grav_accel * delta
-
-	global_position += velocity * delta
-
-	rotation = (global_position - planet_ref.global_position).angle() + PI * 0.5
-
-	var planet_radius: float = planet_ref.get("radius") if planet_ref.get("radius") != null else 200.0
-	if state == State.LAUNCHING and dist > planet_radius * 1.05:
-		state = State.ORBITING
-		if flame:
-			flame.visible = false
+	if state == State.LAUNCHING:
+		global_position += launch_dir * launch_speed * delta
 
 func _find_planet() -> void:
-	var node = get_parent()
+	var node := get_parent()
 	while node != null:
 		if node.has_method("add_item"):
 			planet_ref = node
@@ -86,9 +68,7 @@ func _find_planet() -> void:
 	planet_ref = get_tree().get_first_node_in_group("planet")
 
 func _unregister_from_planet() -> void:
-	if planet_ref == null:
-		return
-	if not planet_ref.has_method("remove_item"):
+	if not is_instance_valid(planet_ref):
 		return
 	var items = planet_ref.get("items")
 	if items == null:
