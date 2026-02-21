@@ -8,7 +8,7 @@
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=944893672]
 rotation = 0.26005405
-scale = Vector2(0.05984724, 0.05984724)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_t4se3")
 script = ExtResource("2_6mo6b")
 velocity = 2000.0

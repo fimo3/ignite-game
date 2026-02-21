@@ -50,7 +50,7 @@ func spawn(pos: Vector2) -> void:
 		return
 
 	bang.flashbang(0.2, 0.5, 1.5)
-	await get_tree().create_timer(1.0).timeout
+	#await get_tree().create_timer(0.3).timeout
 
 	if not is_instance_valid(asteroid):
 		return
@@ -81,17 +81,11 @@ func spawn(pos: Vector2) -> void:
 
 	# --- Remove the asteroid itself (just free it, it's not in planet.items) ---
 	asteroid.queue_free()
+	await get_tree().create_timer(1).timeout
 	cameraShaker.start_shake_ramp(0, 0, 0)
-
 	# --- Destroy all trees in range ---
 	for id in ids_to_remove:
 		planet.remove_item(id)
-
-	# --- Spawn mutant if 2+ trees were hit ---
-	if parent_colors.size() >= 2:
-		_spawn_mutant(pos, parent_colors[0], parent_colors[1])
-	elif parent_colors.size() == 1 and randf() > 0.5:
-		_spawn_mutant(pos, parent_colors[0], Color(randf(), randf(), randf()))
 
 	# --- Debris explosion trees ---
 	if explosiontree != null:
@@ -107,6 +101,12 @@ func spawn(pos: Vector2) -> void:
 		planet.add_item(crater_id, pos.angle(), crater)
 		await get_tree().create_timer(5.0).timeout
 		planet.remove_item(crater_id)
+
+	# --- Spawn mutant if 2+ trees were hit ---
+	if parent_colors.size() >= 2:
+		_spawn_mutant(pos, parent_colors[0], parent_colors[1])
+	elif parent_colors.size() == 1 and randf() > 0.5:
+		_spawn_mutant(pos, parent_colors[0], Color(randf(), randf(), randf()))
 
 func _spawn_mutant(impact_pos: Vector2, color_a: Color, color_b: Color) -> void:
 	if mutant_tree_scene == null:

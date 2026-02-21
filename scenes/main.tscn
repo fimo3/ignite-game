@@ -65,7 +65,7 @@ speedRadPerSec = -0.1
 radius = 200
 
 [node name="wind2" type="Sprite2D" parent="." unique_id=195382423]
-z_index = 2
+z_index = 1000
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("9_gqmmt")
 script = ExtResource("5_muem4")
