@@ -21,12 +21,47 @@ const TREE_COLORS = {
 func _ready() -> void:
 	randomize()
 	# Spawn one asteroid at startup like the original
-	spawn_random()
+	#spawn_random()
+	
+	
+
+	
 
 func spawn_random() -> void:
 	var angle := randf() * TAU
 	var pos := Vector2(cos(angle), sin(angle)) * spawn_distance
 	spawn(pos)
+
+func spawn_MASSIVE():
+	var angle := randf() * TAU
+	var pos := Vector2(cos(angle), sin(angle)) * spawn_distance
+	
+	if scene == null:
+		return
+
+	# Give this asteroid its own unique ID so concurrent spawns don't collide
+	planet.counter += 1
+	var asteroid_id: int = planet.counter
+
+	# Instantiate and place the asteroid directly — don't use add_item so
+	# we fully control the lifetime without double-free
+	var asteroid: Node2D = scene.instantiate()
+	planet.add_child(asteroid)
+	asteroid.global_position = pos
+
+	cameraShaker.start_shake_ramp(2.5, 0.15, 0.7)
+	await get_tree().create_timer(1.8).timeout
+
+	# Safety: node may have been freed if the scene reloaded
+	if not is_instance_valid(asteroid):
+		return
+
+	bang.flashbang(0.2, 0.5, 1.5)
+	#await get_tree().create_timer(0.3).timeout
+
+	await get_tree().create_timer(1.8).timeout
+	get_tree().change_scene_to_file("res://scenes/end.tscn")
+	
 
 func spawn(pos: Vector2) -> void:
 	if scene == null:

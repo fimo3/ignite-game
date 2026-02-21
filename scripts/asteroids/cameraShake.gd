@@ -28,7 +28,8 @@ func _shake_ramp(duration: float, start_strength: float, end_strength: float) ->
 	while _ramping and time < duration:
 		var p := time / duration
 		_trauma = clamp(lerp(start_strength, end_strength, p), 0.0, 1.0)
-		await get_tree().process_frame
+		if get_tree != null:
+			await get_tree().process_frame
 		time += get_process_delta_time()
 
 	if _ramping:

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ckkn67ykrmipy"]
+
+[ext_resource type="Script" uid="uid://b7u8hkyoehs1b" path="res://scenes/end.gd" id="1_3d26k"]
+[ext_resource type="Texture2D" uid="uid://bbevd04bxi3xp" path="res://textures/endscreen.png" id="2_p7m4f"]
+
+[node name="End" type="Node2D" unique_id=313435203]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1244234065]
+script = ExtResource("1_3d26k")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=700752251]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_p7m4f")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=1861888925]
+anchors_preset = -1
+anchor_left = 0.56200004
+anchor_top = 0.758
+anchor_right = 0.98100007
+anchor_bottom = 0.89800006
+offset_left = -0.42407227
+offset_top = -0.184021
+offset_right = -0.11206055
+offset_bottom = 0.095947266
+text = "U WIN"
+
+[connection signal="button_up" from="CanvasLayer/Button" to="CanvasLayer" method="_on_button_button_up"]
