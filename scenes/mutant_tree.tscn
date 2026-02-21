@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://mutant_tree_001"]
+
+[ext_resource type="Script" path="res://scripts/mutant_tree.gd" id="1_mt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mt"]
+size = Vector2(22, 3.5)
+
+[node name="MutantTree" type="StaticBody2D" unique_id=300000001]
+script = ExtResource("1_mt")
+fruit_chance = 0.35
+
+[node name="BranchContainer" type="Node2D" parent="." unique_id=300000002]
+z_index = 30
+scale = Vector2(0.2, 0.2)
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=300000003]
+position = Vector2(0, 19.75)
+shape = SubResource("RectangleShape2D_mt")

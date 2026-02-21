@@ -7,7 +7,7 @@ extends Sprite2D
 
 var items: Array = []
 var index_by_id: Dictionary = {}
-var counter :int = 1
+var counter: int = 1
 
 func _norm_angle(theta: float) -> float:
 	var t := fmod(theta, TAU)
@@ -39,7 +39,7 @@ func _place_node_world_locked(node: Node2D, theta_world: float) -> void:
 func _insert_entry(id: int, node: Node2D) -> void:
 	var t_local := _norm_angle(node.position.angle())
 	var idx := _lower_bound(t_local)
-	items.insert(idx, { "id": id, "theta": t_local, "node": node })
+	items.insert(idx, {"id": id, "theta": t_local, "node": node})
 	_reindex_from(idx)
 
 func add_item(id: int, theta_world: float, scene: PackedScene) -> Node2D:
@@ -108,10 +108,7 @@ func get_in_angle_range(a0_world: float, a1_world: float) -> Array:
 	return out
 
 func _ready() -> void:
-	pass # Replace with function body. 
+	add_to_group("planet")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	transform = transform.rotated(delta * speedRadPerSec / camera.zoom.x)
-	pass

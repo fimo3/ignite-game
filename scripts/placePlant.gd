@@ -1,34 +1,49 @@
 extends Node2D
 @export var plant_scene: PackedScene = preload("res://scenes/tree.tscn")
+@export var mushroom_scene: PackedScene = preload("res://scenes/mushroom.tscn")
 @onready var planet_sprite = $"../../Planet"
 @onready var asteroid_spawner = $"../../Planet/AsteroidSpawner"
-var spawned_trees : Array = []
+var spawned_trees: Array = []
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("left click"):
 		var world_pos := get_global_mouse_position()
-		spawn_plant(world_pos)
+		# Check if we have a mushroom in inventory to place
+		if Inventory.get_count("mushroom") > 0:
+			spawn_mushroom(world_pos)
+		else:
+			spawn_plant(world_pos)
 	if Input.is_action_just_pressed("asteroid spawn"):
 		spawn_asteroid()
 
 func spawn_plant(pos: Vector2):
 	if plant_scene == null:
 		return
-	var plant := plant_scene.instantiate()
-	var glpos : Vector2 = pos.normalized() * (planet_sprite.radius + randf() * planet_sprite.variation)
-	planet_sprite.add_child(plant)
-	plant.global_position = glpos
-	plant.global_rotation = glpos.angle() + PI/2
+	planet_sprite.counter += 1
+	var plant = planet_sprite.add_item(planet_sprite.counter, pos.angle(), plant_scene)
+	if plant == null:
+		return
 	spawned_trees.append(plant)
+
+func spawn_mushroom(pos: Vector2):
+	if mushroom_scene == null:
+		return
+	# Consume from inventory
+	Inventory.remove_item("mushroom", 1)
+	planet_sprite.counter += 1
+	var mush = planet_sprite.add_item(planet_sprite.counter, pos.angle(), mushroom_scene)
+	if mush == null:
+		return
+	# Give the mushroom a reference to the planet
+	if mush.has_method("_find_planet"):
+		mush._find_planet()
+	spawned_trees.append(mush)
 
 func spawn_asteroid():
 	asteroid_spawner.spawn_random()
-	
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

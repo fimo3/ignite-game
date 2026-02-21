@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Inventory="*uid://7vycqrvwst1c"
+Bank="*uid://d0440ld3si4ad"
 
 [input]
 

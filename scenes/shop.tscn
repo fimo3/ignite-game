@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://y2jm80vfg7hs"]
+
+[ext_resource type="Script" uid="uid://jxuoq0my0sun" path="res://scripts/shop.gd" id="1_shop"]
+
+[node name="Shop" type="Control" unique_id=100000001]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -180.0
+offset_right = 200.0
+offset_bottom = 180.0
+script = ExtResource("1_shop")
+
+[node name="Panel" type="Panel" parent="." unique_id=100000002]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=100000003]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="Panel/VBox" unique_id=100000004]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "🛒 PLANET SHOP"
+
+[node name="BalanceLabel" type="Label" parent="Panel/VBox" unique_id=100000005]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Balance: $100"
+
+[node name="Separator" type="HSeparator" parent="Panel/VBox" unique_id=100000006]
+layout_mode = 2
+
+[node name="ShopLabel" type="Label" parent="Panel/VBox" unique_id=100000007]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Items for sale:"
+
+[node name="MushroomRow" type="HBoxContainer" parent="Panel/VBox" unique_id=100000008]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ItemLabel" type="Label" parent="Panel/VBox/MushroomRow" unique_id=100000009]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "🍄 Rocket Mushroom"
+
+[node name="CostLabel" type="Label" parent="Panel/VBox/MushroomRow" unique_id=100000010]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "$15"
+
+[node name="BuyButton" type="Button" parent="Panel/VBox/MushroomRow" unique_id=100000011]
+layout_mode = 2
+text = "Buy"
+
+[node name="MushroomDesc" type="Label" parent="Panel/VBox" unique_id=100000012]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Right-click when planted to launch into orbit!"
+autowrap_mode = 3
+
+[node name="Separator2" type="HSeparator" parent="Panel/VBox" unique_id=100000013]
+layout_mode = 2

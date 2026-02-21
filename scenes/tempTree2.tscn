@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b648x7tite5xe"]
 
-[ext_resource type="Texture2D" uid="uid://bqsacvku6xp2b" path="res://textures/OurTextures/predplant2.png" id="1_sbu3g"]
+[ext_resource type="Texture2D" uid="uid://cg318txm030id" path="res://textures/predplant2.png" id="1_sbu3g"]
 
 [node name="TempTree2" type="Node2D" unique_id=1366989630]
 

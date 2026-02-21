@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://cgi5iti34shnr"]
+[gd_scene format=3 uid="uid://y5o2tc6r0t0n"]
 
 [ext_resource type="Script" uid="uid://bwgk7l2qg81wa" path="res://scripts/inventory_ui.gd" id="1_fyqef"]
 [ext_resource type="Texture2D" uid="uid://dho0ey8lmbgs8" path="res://textures/inventory.png" id="1_x4jx1"]
+[ext_resource type="PackedScene" uid="uid://y2jm80vfg7hs" path="res://scenes/shop.tscn" id="2_yev5y"]
 
 [node name="UI" type="CanvasLayer" unique_id=1969435280]
 
@@ -17,6 +18,19 @@ grow_horizontal = 2
 scale = Vector2(0.21, 0.21)
 pivot_offset = Vector2(1500, 0)
 texture = ExtResource("1_x4jx1")
+
+[node name="Shop" parent="." unique_id=100000001 instance=ExtResource("2_yev5y")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -360.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="Container" type="Container" parent="." unique_id=1834984569]
 anchors_preset = 5
