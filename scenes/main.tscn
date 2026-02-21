@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://4pqund3nukl7"]
 
-[ext_resource type="Script" uid="uid://d26f0ivexyxh8" path="res://scenes/main.gd" id="1_0ld40"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_0ld40"]
 [ext_resource type="Texture2D" uid="uid://cchq7ww586rol" path="res://textures/earthplanet.png" id="1_trceg"]
 [ext_resource type="Script" uid="uid://itdwl27ltrrc" path="res://scripts/planet.gd" id="2_a8y0u"]
 [ext_resource type="Script" uid="uid://dg2vlib6r2slp" path="res://scripts/asteroidspawner.gd" id="3_jkv2x"]

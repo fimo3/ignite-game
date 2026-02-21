@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://1baeg1ots07t"
+path="res://.godot/imported/Pssss 2.ogg-9a862be697ed8a2c1fbd8b32ceb5f7ee.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/Pssss 2.ogg"
+dest_files=["res://.godot/imported/Pssss 2.ogg-9a862be697ed8a2c1fbd8b32ceb5f7ee.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

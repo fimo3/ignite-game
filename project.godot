@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Ignite-game"
-run/main_scene="uid://dmygt7lhu4j3h"
+run/main_scene="uid://4pqund3nukl7"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/image="uid://cuse0q4wfj0pp"

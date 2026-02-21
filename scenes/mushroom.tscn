@@ -6,11 +6,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mush"]
 size = Vector2(40, 50)
 
-[node name="Mushroom" type="StaticBody2D" unique_id=200000001]
+[node name="Mushroom" type="CharacterBody2D" unique_id=1963639932]
 script = ExtResource("2_mush")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=200000002]
-scale = Vector2(0.45, 0.45)
+position = Vector2(3.0517578e-05, 8.000015)
+scale = Vector2(9.584999, 4.465)
 texture = ExtResource("2_0bdi0")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=200000003]
