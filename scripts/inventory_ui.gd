@@ -3,12 +3,16 @@ extends Container
 @export var slot_scene: PackedScene = preload("res://scenes/inventory_slot.tscn")
 @export var item_icons: Dictionary = {
 	"fruit": preload("res://textures/fruit1.png"),
-	"mushroom": preload("res://textures/Mushroom_2.png")
+	"mushroom": preload("res://textures/Mushroom_2.png"),
+	# mutant_fruit reuses the fruit texture but the slot color will be tinted purple
+	# Replace with a dedicated texture once one is available
+	"mutant_fruit": preload("res://textures/fruit1.png")
 }
 
 const SELL_PRICES = {
 	"fruit": 5,
-	"mushroom": 10
+	"mushroom": 10,
+	"mutant_fruit": 20
 }
 
 const MUSHROOM_COST := 15
@@ -39,6 +43,9 @@ func _on_inventory_changed() -> void:
 		add_child(slot)
 		var sell_price: int = SELL_PRICES.get(item_name, 1)
 		slot.setup(item_name, count, item_icons.get(item_name, null), sell_price)
+		# Tint mutant fruit slots so they're visually distinct
+		if item_name == "mutant_fruit":
+			slot.modulate = Color(0.85, 0.4, 1.0)
 		var sell_btn: Button = slot.get_node_or_null("Button")
 		if sell_btn:
 			sell_btn.pressed.connect(_on_sell_pressed.bind(item_name))

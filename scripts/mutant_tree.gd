@@ -15,7 +15,7 @@ extends StaticBody2D
 	preload("res://textures/stem_fern3.png")
 ]
 @export var leaf_texture: Texture2D = preload("res://textures/fern_leaf.png")
-@export var fruit_scene: PackedScene = preload("res://scenes/fruit.tscn")
+@export var fruit_scene: PackedScene = preload("res://scenes/mutant_fruit.tscn")
 @export var fruit_chance: float = 0.3
 
 var mutant_color_a: Color = Color(0.0, 0.697, 0.328)
@@ -120,11 +120,11 @@ func create_tip(pos: Vector2, direction: Vector2, length: float, thickness: floa
 		create_leaf_tip(pos, direction, length, thickness)
 
 func create_fruit(pos: Vector2) -> void:
-	if fruit_scene == null:
-		return
 	var fruit := fruit_scene.instantiate()
 	fruit.position = pos
 	$BranchContainer.add_child(fruit)
+	if fruit.has_method("set_color"):
+		fruit.set_color(tree_color)
 	fruitpos.append(fruit.global_position)
 
 func create_leaf_tip(pos: Vector2, direction: Vector2, length: float, thickness: float) -> void:

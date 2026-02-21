@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dxim48mre0fj"]
+
+[ext_resource type="Script" uid="uid://bgqe8tnmiulko" path="res://scripts/mutant_fruit.gd" id="1_mf"]
+[ext_resource type="Texture2D" uid="uid://c4p2naw84flom" path="res://textures/fruit2.png" id="2_hj6ql"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mf"]
+radius = 104.00481
+
+[sub_resource type="Gradient" id="Gradient_mf"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mf"]
+gradient = SubResource("Gradient_mf")
+fill = 1
+fill_from = Vector2(0.5090909, 0.48181817)
+fill_to = Vector2(0.9409091, 0.17272727)
+
+[node name="MutantFruit" type="Area2D" unique_id=400000001]
+script = ExtResource("1_mf")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=400000002]
+scale = Vector2(0.17999999, 0.17999999)
+texture = ExtResource("2_hj6ql")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=400000003]
+shape = SubResource("CircleShape2D_mf")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=400000004]
+scale = Vector2(5.5, 5.5)
+texture = SubResource("GradientTexture2D_mf")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

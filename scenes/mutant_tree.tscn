@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://mutant_tree_001"]
+[gd_scene format=3 uid="uid://dsr1m3c7u4t1c"]
 
-[ext_resource type="Script" path="res://scripts/mutant_tree.gd" id="1_mt"]
+[ext_resource type="Script" uid="uid://ct2hyjgn0mt6r" path="res://scripts/mutant_tree.gd" id="1_mt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mt"]
 size = Vector2(22, 3.5)

@@ -7,7 +7,8 @@ signal inventory_changed
 # Item sell prices
 const SELL_PRICES = {
 	"fruit": 5,
-	"mushroom": 10
+	"mushroom": 10,
+	"mutant_fruit": 20
 }
 
 func add_item(item_name: String, amount: int = 1):
