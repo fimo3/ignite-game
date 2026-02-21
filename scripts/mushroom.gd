@@ -2,16 +2,14 @@ extends StaticBody2D
 
 enum State { PLANTED, LAUNCHING, ORBITING }
 
-@export var launch_speed := 600.0
-@export var orbit_height := 280.0  # Distance from planet center
-@export var orbit_speed := 1.2     # Radians per second
+@export var launch_speed := 300.0
+@export var gravity := 0.2
+@export var gravity_scale := 120.0 
 
 var state: State = State.PLANTED
-var orbit_angle: float = 0.0
 var velocity: Vector2 = Vector2.ZERO
 var planet_ref: Node2D = null
 
-# Rocket flame particles (simple sprite child)
 @onready var sprite: Sprite2D = $Sprite
 @onready var flame: Node2D = $Flame if has_node("Flame") else null
 
@@ -30,66 +28,72 @@ func _on_mouse_exited() -> void:
 	modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 func _launch() -> void:
-	state = State.LAUNCHING
-	# Remove from planet's item tracking - find planet
 	_find_planet()
-	
-	# Remove static collision so it doesn't block things
-	$Collision.disabled = true if has_node("Collision") else null
-	
-	# Calculate launch direction (away from planet center)
+	state = State.LAUNCHING
+
+	var col := get_node_or_null("Collision")
+	if col:
+		col.disabled = true
+
 	var dir: Vector2
 	if planet_ref:
 		dir = (global_position - planet_ref.global_position).normalized()
 	else:
-		dir = Vector2.UP
-	
-	velocity = dir * launch_speed
-	
-	# Show flame effect
+		dir = -global_position.normalized()
+
+	var tangent := Vector2(-dir.y, dir.x)
+	velocity = dir * launch_speed + tangent * launch_speed * 0.55
+
 	if flame:
 		flame.visible = true
 
+	_unregister_from_planet()
+
 func _process(delta: float) -> void:
 	match state:
-		State.LAUNCHING:
-			_process_launch(delta)
-		State.ORBITING:
-			_process_orbit(delta)
+		State.LAUNCHING, State.ORBITING:
+			_step_physics(delta)
 
-func _process_launch(delta: float) -> void:
+func _step_physics(delta: float) -> void:
 	if not planet_ref:
 		_find_planet()
 		return
-	
+
+	var to_planet: Vector2 = planet_ref.global_position - global_position
+	var dist: float = to_planet.length()
+
+	var grav_accel: float = gravity * gravity_scale           # px/s²
+	var grav_dir: Vector2 = to_planet / dist if dist > 0.0 else Vector2.ZERO
+	velocity += grav_dir * grav_accel * delta
+
 	global_position += velocity * delta
-	# Slow down as we reach orbit height
-	var dist = global_position.distance_to(planet_ref.global_position)
-	if dist >= orbit_height:
-		# Transition to orbit
+
+	rotation = (global_position - planet_ref.global_position).angle() + PI * 0.5
+
+	var planet_radius: float = planet_ref.get("radius") if planet_ref.get("radius") != null else 200.0
+	if state == State.LAUNCHING and dist > planet_radius * 1.05:
 		state = State.ORBITING
-		# Set orbit angle based on current position relative to planet
-		var rel = global_position - planet_ref.global_position
-		orbit_angle = rel.angle()
 		if flame:
 			flame.visible = false
 
-func _process_orbit(delta: float) -> void:
-	if not planet_ref:
-		return
-	orbit_angle += orbit_speed * delta
-	var orbit_pos = planet_ref.global_position + Vector2.from_angle(orbit_angle) * orbit_height
-	global_position = orbit_pos
-	# Face the direction of travel (tangent)
-	rotation = orbit_angle + PI * 0.5
-
 func _find_planet() -> void:
-	# Walk up tree to find the planet sprite
 	var node = get_parent()
 	while node != null:
 		if node.has_method("add_item"):
 			planet_ref = node
 			return
 		node = node.get_parent()
-	# Fallback: search from root
 	planet_ref = get_tree().get_first_node_in_group("planet")
+
+func _unregister_from_planet() -> void:
+	if planet_ref == null:
+		return
+	if not planet_ref.has_method("remove_item"):
+		return
+	var items = planet_ref.get("items")
+	if items == null:
+		return
+	for entry in items:
+		if entry.get("node") == self:
+			planet_ref.remove_item(entry["id"])
+			return
